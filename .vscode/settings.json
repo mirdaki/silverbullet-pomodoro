@@ -1,5 +1,8 @@
 {
   "deno.enable": true,
-  "editor.formatOnSave": true,
-  "deno.config": "deno.jsonc"
+  "editor.formatOnSave": false,
+  "deno.config": "deno.jsonc",
+  "cSpell.words": [
+    "pomodoro"
+  ]
 }

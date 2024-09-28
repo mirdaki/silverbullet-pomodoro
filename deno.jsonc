@@ -1,11 +1,14 @@
 {
   "tasks": {
-    "build": "silverbullet plug:compile -c deno.jsonc hello.plug.yaml",
-    "watch": "silverbullet plug:compile -c deno.jsonc hello.plug.yaml -w"
+    "build": "silverbullet plug:compile -c deno.jsonc pomodoro.plug.yaml",
+    "watch": "silverbullet plug:compile -c deno.jsonc pomodoro.plug.yaml -w",
+    "debug-build": "silverbullet plug:compile --debug -c deno.jsonc pomodoro.plug.yaml"
   },
   "lint": {
     "rules": {
-      "exclude": ["no-explicit-any"]
+      "exclude": [
+        "no-explicit-any"
+      ]
     }
   },
   "fmt": {
@@ -16,6 +19,7 @@
     ]
   },
   "imports": {
-    "@silverbulletmd/silverbullet": "jsr:@silverbulletmd/silverbullet@^0.9.0"
+    "@silverbulletmd/silverbullet": "jsr:@silverbulletmd/silverbullet@^0.9.0",
+    "zod": "npm:zod@3.23.8"
   }
 }

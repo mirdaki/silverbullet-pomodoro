@@ -1,0 +1,28 @@
+name: pomodoro
+version: 0.1
+assets:
+  - "assets/**/*.*"
+functions:
+  # API for panel
+  stateChange:
+    path: pomodoro.ts:stateChange
+
+  initializePlug:
+    path: "pomodoro.ts:initializePlug"
+    events:
+      - editor:init
+      - editor:pageLoaded
+
+  # User facing
+  togglePomodoroPanel:
+    path: pomodoro.ts:togglePomodoroPanel
+    command:
+      name: "🍅 Pomodoro: Toggle Panel"
+      key: ctrl-alt-z
+      mac: cmd-alt-z
+  chooseTask:
+    path: pomodoro.ts:chooseTask
+    command:
+      name: "🍅 Pomodoro: Choose Task"
+      key: ctrl-alt-c
+      mac: cmd-alt-c
