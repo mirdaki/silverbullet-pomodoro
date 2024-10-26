@@ -45,18 +45,17 @@ pomodoro:
   # Determines where the panel is displayed:
   # - "lhs" - left hand side
   # - "rhs" - right hand side
-  # - "bhs" - bottom
-  # - "modal" - in a modal
   position: rhs
 
   # Must be > 0.
   # position = "lhs" | "rhs": determines the width of the panel.
-  # position = "modal": sets the margin around the modal window.
-  # position = "bhs": No effect
   size: .4
 
   # The query to use to get tasks listed by the `🍅 Pomodoro: Choose Task` command.
   taskQuery: task where done = false
+
+  # The audio file to play when the timer ends. Defaults to not playing.
+  audioAlertPath: ""
 
   # The time in minutes for a work session.
   workTime: 25

@@ -36,6 +36,7 @@ type PomodoroPanelUpdate = {
   task: Task | null;
   toggleButtonText: PomodoroToggleButtonText
   timeRemainingInSeconds: number;
+  audioAlertPath: string;
 }
 
 let pomodoroConfig: PomodoroConfig;
@@ -72,13 +73,26 @@ export async function chooseTask() {
   await updatePomodoroPanel(pomodoroStateToPanelUpdate(pomodoroState));
 }
 
+export async function toggleTimer() {
+  if (pomodoroState.panelState === "waiting") {
+    await stateChange("start");
+  } else {
+    await stateChange("pause");
+  }
+}
+
+export async function resetTimer() {
+  await stateChange("reset");
+}
+
+export async function skipTimer() {
+  await stateChange("skip");
+}
 
 // API
 // deno-lint-ignore no-unused-vars
 export async function initializePlug() {
-  if (!pomodoroConfig) {
-    pomodoroConfig = await getPlugConfig();
-  }
+  pomodoroConfig = await getPlugConfig();
 
   if (!pomodoroState) {
     pomodoroState = {
@@ -96,7 +110,7 @@ export async function initializePlug() {
   pomodoroState.currentTask = await clientStore.get(POMODORO_LAST_TASK);
 
   // This will determine if the panel is open or not on startup
-  if (await clientStore.get(POMODORO_LAST_OPEN)) {
+  if (await clientStore.get(POMODORO_LAST_OPEN) && !pomodoroState.panelOpen) {
     await togglePomodoroPanel();
   }
 }
@@ -221,7 +235,7 @@ export async function stateChange(action: PomodoroAction) {
  */
 type PomodoroConfig = z.infer<typeof pomodoroConfigSchema>;
 
-const POSITIONS = ["rhs", "lhs", "bhs", "modal"] as const;
+const POSITIONS = ["rhs", "lhs"] as const;
 
 const pomodoroConfigSchema = z.object({
   /**
@@ -263,6 +277,11 @@ const pomodoroConfigSchema = z.object({
    * The query to use to get tasks listed by the `🍅 Pomodoro: Choose Task` command.
    */
   taskQuery: z.string().optional().default("task where done = false"),
+
+  /**
+   * The audio file to play when the timer ends. Defaults to not playing.
+   */
+  audioAlertPath: z.string().optional().default(""),
 });
 
 let configErrorShown = false;
@@ -391,6 +410,7 @@ function pomodoroStateToPanelUpdate(state: PomodoroGlobalState): PomodoroPanelUp
     task: state.currentTask,
     toggleButtonText: state.currentButtonText,
     timeRemainingInSeconds: state.timeRemainingInSeconds,
+    audioAlertPath: pomodoroConfig.audioAlertPath,
   };
 }
 

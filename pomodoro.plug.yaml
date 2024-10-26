@@ -26,3 +26,17 @@ functions:
       name: "🍅 Pomodoro: Choose Task"
       key: ctrl-alt-c
       mac: cmd-alt-c
+  toggleTimer:
+    path: pomodoro.ts:toggleTimer
+    command:
+      name: "🍅 Pomodoro: Toggle Timer"
+      key: ctrl-alt-x
+      mac: cmd-alt-x
+  resetTimer:
+    path: pomodoro.ts:resetTimer
+    command:
+      name: "🍅 Pomodoro: Reset Timer"
+  skipTimer:
+    path: pomodoro.ts:skipTimer
+    command:
+      name: "🍅 Pomodoro: Skip Timer"
