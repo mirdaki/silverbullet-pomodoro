@@ -1,20 +1,30 @@
 {
-  "version": "3",
-  "packages": {
-    "specifiers": {
-      "jsr:@silverbulletmd/silverbullet@^0.9.0": "jsr:@silverbulletmd/silverbullet@0.9.4",
-      "npm:zod@3.23.8": "npm:zod@3.23.8"
+  "version": "4",
+  "specifiers": {
+    "jsr:@silverbulletmd/silverbullet@~0.10.4": "0.10.4",
+    "npm:js-yaml@4.1.0": "4.1.0",
+    "npm:zod@3.23.8": "3.23.8"
+  },
+  "jsr": {
+    "@silverbulletmd/silverbullet@0.10.4": {
+      "integrity": "021c53f3ad82b5e05247517ae90a458e00c6b8d95826b12454da0c956fff4c12",
+      "dependencies": [
+        "npm:js-yaml"
+      ]
+    }
+  },
+  "npm": {
+    "argparse@2.0.1": {
+      "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q=="
     },
-    "jsr": {
-      "@silverbulletmd/silverbullet@0.9.4": {
-        "integrity": "be0311b11d50ddae7ba5cdc1917d0f2e6b12b0d36fb7e28f7581c7b1ec235583"
-      }
+    "js-yaml@4.1.0": {
+      "integrity": "sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==",
+      "dependencies": [
+        "argparse"
+      ]
     },
-    "npm": {
-      "zod@3.23.8": {
-        "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==",
-        "dependencies": {}
-      }
+    "zod@3.23.8": {
+      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g=="
     }
   },
   "remote": {
@@ -39,7 +49,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@silverbulletmd/silverbullet@^0.9.0",
+      "jsr:@silverbulletmd/silverbullet@~0.10.4",
       "npm:zod@3.23.8"
     ]
   }
